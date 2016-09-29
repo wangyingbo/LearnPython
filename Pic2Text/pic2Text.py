@@ -24,15 +24,15 @@ def pic2Text(_file,_text):
 	#此处生成文字图片,注意输出的时候 w 和 h
 	output = Image.new('RGBA',(w*fontSize,h*fontSize),(255,255,255))
 	draw = ImageDraw.Draw(output)
-	ft = ImageFont.truetype("msyhbd.ttf",fontSize) #注意字体支持中文
+	ft = ImageFont.truetype("Arial.ttf",fontSize) #注意字体支持中文
 	for j in range(h):
 		for i in range(w):
 			index = int((greyMap[i][j] - minGrey)//greyStep) #计算出改点使用哪个字符
 			if index >= len(_text):
 				index = len(_text) - 1  #注意结尾最大灰度值，防止越界
-			draw.text((i*fontSize,j*fontSize),unicode(_text[index],'UTF-8'), fill=img.getpixel((i,j)), font=ft) #汉字编码
+			draw.text((i*fontSize,j*fontSize),str(_text[index],'utf-8'), fill=img.getpixel((i,j)), font=ft) #汉字编码 unicode(_text[index],'UTF-8')
 	output.save(_file.split('.')[0] + '_text.jpg','JPEG')
 
-if __name__ == '__main__':
-	textList = ['骤','撒','啊','哈','王','一']
-	pic2Text('test.jpg',textList)
+# if __name__ == '__main__':
+textList = ['王','颖','博','爱','小','超']
+pic2Text('test.jpg',textList)

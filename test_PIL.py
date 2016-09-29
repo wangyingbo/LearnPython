@@ -39,14 +39,14 @@ font = ImageFont.truetype('Arial.ttf', 36)
 # 创建Draw对象：
 draw = ImageDraw.Draw(image)
 # 填充每个像素：
-for x in xrange(width):
+for x in range(width):
 	for y in range(height):
 		draw.point((x,y), fill = rndColor())
 # 输出文字：
-for t in xrange(4):
+for t in range(4):
 	draw.text((60 * t + 10,10),rndChar(),font = font, fill = rndColor2())
 # 模糊：
-image = Image.filter(ImageFilter.BLUR)
+image = image.filter(ImageFilter.BLUR)
 image.save('code_creat.jpg','jpeg')
 
 
